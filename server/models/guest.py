@@ -7,6 +7,7 @@ class Guest(db.Model):
     name = db.Column(db.String, nullable=False)
     occupation = db.Column(db.String, nullable=False)
 
-    appearance = db.relationship('Appearance', back_populates='guest', cascade='all, delete-orphan')
+    appearances = db.relationship('Appearance', back_populates='guest', cascade='all, delete-orphan')
+
     def __repr__(self):
         return f'<Guest {self.name}, {self.occupation}>'

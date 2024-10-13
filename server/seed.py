@@ -9,6 +9,11 @@ from app import app
 
 def seed_from_csv(csv_file):
     with app.app_context():
+        # Clearing existing data from the database
+        print('Deleting data')
+        Guest.query.delete()
+        Episode.query.delete()
+        Appearance.query.delete()
         with open(csv_file, mode='r') as file:
             reader = csv.DictReader(file)
             for row in reader:
@@ -37,7 +42,7 @@ def seed_from_csv(csv_file):
                 db.session.add(appearance)
             db.session.commit()    
 
-
+            print('complete seeding')
 
 if __name__ == '__main__':
     seed_from_csv('./data/seed.csv')

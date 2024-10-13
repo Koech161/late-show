@@ -8,7 +8,8 @@ class Episode(db.Model):
     date = db.Column(db.DateTime, nullable=False , default= dt.datetime.utcnow)
     number = db.Column(db.Integer, nullable=False)
 
-    appearance = db.relationship('Appearance', back_populates='episode', cascade='all, delete-orphan')
+    appearances = db.relationship('Appearance', back_populates='episode', cascade='all, delete-orphan')
+  
 
     def __repr__(self):
         return f'<Episode {self.date}, {self.number}>'

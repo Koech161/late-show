@@ -8,8 +8,8 @@ class Appearance(db.Model):
     episode_id = db.Column(db.Integer, db.ForeignKey('episodes.id'), nullable=False)
     guest_id = db.Column(db.Integer, db.ForeignKey('guests.id'), nullable=False)
 
-    episode = db.relationship('Episode', back_populates='appearance')
-    guest = db.relationship('Guest', back_populates='appearance')
+    episode = db.relationship('Episode', back_populates='appearances')
+    guest = db.relationship('Guest', back_populates='appearances')
 
     @validates('rating')
     def validate_rating(self, key, rating):
